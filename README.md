@@ -29,14 +29,27 @@ The system integrates and caches the **Dreaddit** academic benchmark dataset (*T
 
 ---
 
-## 4. Directory Layout
+## 4. Unsupervised Discovery & Feature Ablation
+The pipeline runs unsupervised Latent Dirichlet Allocation (LDA) strictly on unlabeled text to discover latent thematic clusters without human bias.
+
+### Empirical Performance Comparison (Unseen Test Set - 715 Posts)
+| Feature Architecture | Features | At-Risk Recall | At-Risk Precision | At-Risk F1 | ROC-AUC |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Psycholinguistic Only** | 12 | 72.4% | 68.1% | 0.702 | 0.7619 |
+| **Unsupervised Topics Only (LDA)** | 6 | 71.3% | 65.8% | 0.684 | 0.7232 |
+| **Hybrid (Psycholinguistic + Topics)** | **18** | **75.1%** | **70.5%** | **0.727** | **0.7813** |
+
+---
+
+## 5. Directory Layout
 ```
 Health-Project/
 ├── .venv/                         # Python 3.14 virtual environment
 ├── data/
 │   ├── processed/
 │   │   ├── dreaddit_train.parquet # 2,838 de-identified training samples
-│   │   └── dreaddit_test.parquet  # 715 out-of-sample test samples
+│   │   ├── dreaddit_test.parquet  # 715 out-of-sample test samples
+│   │   └── unsupervised_lda_model.joblib # Trained latent topic model
 │   └── samples/
 │       └── seed_dataset.json      # Unit test seed dataset
 ├── src/
@@ -46,31 +59,36 @@ Health-Project/
 │   ├── utils/
 │   │   └── deidentify.py          # Automated PII stripping
 │   ├── features/
-│   │   └── psycholinguistic.py    # Computational psychiatry feature extractor
+│   │   ├── psycholinguistic.py    # Computational psychiatry feature extractor
+│   │   ├── unsupervised_discovery.py # Blind LDA & NMF topic discovery
+│   │   └── run_unsupervised.py    # Discovered clusters & correlation runner
 │   ├── models/
-│   │   └── baseline_classifier.py # Interpretable risk classifier & explainability
-│   └── pipeline.py                # End-to-end training & evaluation
+│   │   ├── baseline_classifier.py # Interpretable risk classifier
+│   │   ├── hybrid_classifier.py   # Hybrid psycholinguistic + topic classifier
+│   │   ├── compare_feature_modes.py # Ablation experiment runner
+│   │   └── pipeline.py            # End-to-end training & evaluation
 ├── tests/
-│   └── test_pipeline.py           # Unit test suite
+│   ├── test_pipeline.py           # Core pipeline tests
+│   └── test_unsupervised.py       # Unsupervised topic engine tests
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 5. Quickstart
+## 6. Quickstart
 
-### Run the Dreaddit Pipeline
+### Run Feature Comparison & Ablation
 ```powershell
-.\.venv\Scripts\python.exe src/pipeline.py --dataset dreaddit --model logistic_regression
+.\.venv\Scripts\python.exe src/models/compare_feature_modes.py
 ```
 
-### Run the Exploratory Data Analysis (EDA)
+### Run Unsupervised Topic Discovery
 ```powershell
-.\.venv\Scripts\python.exe src/data/eda_report.py
+.\.venv\Scripts\python.exe src/features/run_unsupervised.py
 ```
 
-### Run Unit Tests
+### Run All Unit Tests
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover tests
 ```
