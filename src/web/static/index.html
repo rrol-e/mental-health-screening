@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindSignals | Computational Psychiatry Screening & Triage</title>
+  <meta name="description" content="Ethical machine learning platform for screening and triaging mentally at-risk digital footprints using computational psychiatry and unsupervised pattern discovery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow effects -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+
+  <div class="app-container">
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">MindSignals</h1>
+          <p class="brand-subtitle">Computational Psychiatry & Digital Phenotyping</p>
+        </div>
+      </div>
+
+      <div class="status-tags">
+        <span class="status-pill guardrail-pill" title="All PII, URLs, and handles are sanitized automatically">
+          <span class="dot pulse-green"></span>
+          <span>PII Scrubbing Active</span>
+        </span>
+        <span class="status-pill ethical-pill">
+          <span class="badge-icon">🛡️</span>
+          <span>Screening & Triage (Non-Diagnostic)</span>
+        </span>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Grid -->
+    <main class="dashboard-grid">
+      <!-- Left Column: Input Console & Vignettes -->
+      <section class="console-column">
+        <div class="glass-card input-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Digital Footprint Input</h2>
+              <p class="card-desc">Enter social media text, post excerpt, or communication sample for objective risk assessment.</p>
+            </div>
+            <span class="char-counter" id="charCounter">0 words</span>
+          </div>
+
+          <div class="presets-bar">
+            <span class="presets-label">Load Clinical Vignette:</span>
+            <div class="preset-buttons" id="presetButtons">
+              <!-- Dynamically populated or static -->
+              <button class="preset-btn" data-preset="despair" id="btnPresetDespair">Severe Rumination</button>
+              <button class="preset-btn" data-preset="panic" id="btnPresetPanic">Somatic Panic</button>
+              <button class="preset-btn" data-preset="control" id="btnPresetControl">Social / Control</button>
+              <button class="preset-btn" data-preset="work" id="btnPresetWork">Everyday Stress</button>
+            </div>
+          </div>
+
+          <div class="textarea-wrapper">
+            <textarea
+              id="rawTextInput"
+              class="custom-textarea"
+              placeholder="Paste social media post, reflection, or digital text here to screen for linguistic distress markers..."
+              rows="6"
+            ></textarea>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn-clear" id="btnClear">Clear</button>
+            <button class="btn-analyze" id="btnAnalyze">
+              <span class="btn-text">Run Risk Screening</span>
+              <span class="spinner" id="analyzeSpinner"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Token & Phrase Level Highlighter -->
+        <div class="glass-card token-card" id="tokenCard">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Psycholinguistic Phrase Breakdown</h3>
+              <p class="card-desc">Linguistic markers detected in the sanitized text.</p>
+            </div>
+            <div class="legend">
+              <span class="legend-item tag-distress">Distress / Affect</span>
+              <span class="legend-item tag-self">Self-Focus ($I/Me$)</span>
+              <span class="legend-item tag-absolutist">Absolutist Thought</span>
+              <span class="legend-item tag-somatic">Somatic Mention</span>
+            </div>
+          </div>
+          <div class="annotated-text-box" id="annotatedTextBox">
+            <p class="placeholder-text">Run an analysis to view token-level psycholinguistic annotations.</p>
+          </div>
+        </div>
+
+        <!-- Empirical Benchmark Verification Card -->
+        <div class="glass-card benchmark-card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Academic Ground Truth (Dreaddit Benchmark)</h3>
+              <p class="card-desc">Trained on 3,553 labeled Reddit posts across 10 mental health communities.</p>
+            </div>
+          </div>
+          <div class="benchmark-stats-grid">
+            <div class="stat-mini">
+              <span class="stat-num" id="bmRecall">75.1%</span>
+              <span class="stat-label">At-Risk Sensitivity</span>
+            </div>
+            <div class="stat-mini">
+              <span class="stat-num" id="bmPrecision">70.5%</span>
+              <span class="stat-label">At-Risk Precision</span>
+            </div>
+            <div class="stat-mini">
+              <span class="stat-num" id="bmAuc">0.7813</span>
+              <span class="stat-label">Test ROC-AUC</span>
+            </div>
+            <div class="stat-mini">
+              <span class="stat-num" id="bmSamples">3,553</span>
+              <span class="stat-label">Posts Evaluated</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Triage Score & Feature Attribution -->
+      <section class="results-column">
+        <!-- Main Triage Score Card -->
+        <div class="glass-card triage-card" id="triageCard">
+          <div class="triage-header">
+            <span class="badge" id="triageBadge">Awaiting Input</span>
+            <span class="triage-timestamp" id="triageTimestamp">Ready</span>
+          </div>
+
+          <div class="gauge-section">
+            <div class="circular-gauge">
+              <svg viewBox="0 0 160 160" class="gauge-svg">
+                <circle class="gauge-bg" cx="80" cy="80" r="68"></circle>
+                <circle class="gauge-progress" id="gaugeProgress" cx="80" cy="80" r="68"></circle>
+              </svg>
+              <div class="gauge-inner">
+                <span class="gauge-val" id="gaugeVal">--%</span>
+                <span class="gauge-caption">At-Risk Probability</span>
+              </div>
+            </div>
+
+            <div class="triage-summary">
+              <h3 class="triage-title" id="triageCategoryTitle">Screening Status</h3>
+              <p class="triage-recommendation" id="triageRecommendation">
+                Submit a text sample to generate calibrated risk probability, clinical recommendations, and underlying linguistic drivers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Discovered Unsupervised Latent Themes (LDA) -->
+        <div class="glass-card topics-card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Unsupervised Latent Themes</h3>
+              <p class="card-desc">Blind topic decomposition across discovered psychiatric clusters ($K=6$).</p>
+            </div>
+          </div>
+          <div class="topics-bars-container" id="topicsContainer">
+            <p class="placeholder-text">Latent theme decomposition will appear here after analysis.</p>
+          </div>
+        </div>
+
+        <!-- Psycholinguistic Marker Matrix -->
+        <div class="glass-card metrics-card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Cognitive & Affective Markers</h3>
+              <p class="card-desc">Extracted feature scores relative to population baselines.</p>
+            </div>
+          </div>
+          <div class="feature-metrics-grid" id="featureMetricsGrid">
+            <!-- Populated via JS -->
+            <div class="metric-cell">
+              <span class="cell-label">Self-Focus Ratio</span>
+              <span class="cell-val" id="featSelfFocus">--</span>
+              <span class="cell-desc">Pronouns ($I/me/my$)</span>
+            </div>
+            <div class="metric-cell">
+              <span class="cell-label">Absolutist Thinking</span>
+              <span class="cell-val" id="featAbsolutist">--</span>
+              <span class="cell-desc">Dichotomous cognition</span>
+            </div>
+            <div class="metric-cell">
+              <span class="cell-label">Distress Affect</span>
+              <span class="cell-val" id="featDistress">--</span>
+              <span class="cell-desc">Anhedonia & suffering</span>
+            </div>
+            <div class="metric-cell">
+              <span class="cell-label">Syntactic Hesitation</span>
+              <span class="cell-val" id="featHesitation">--</span>
+              <span class="cell-desc">Ellipses & uncertainty</span>
+            </div>
+          </div>
+
+          <!-- Feature Drivers Attribution -->
+          <div class="drivers-container" id="driversContainer">
+            <h4 class="subhead">Primary Linguistic Drivers</h4>
+            <div class="drivers-list" id="driversList">
+              <p class="placeholder-text">No active drivers computed.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>MindSignals Framework &copy; 2026. Built with Computational Psychiatry NLP &bull; Grounded in EMNLP Dreaddit Benchmarks &bull; Strictly for screening & early triage.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

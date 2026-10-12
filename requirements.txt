@@ -10,3 +10,6 @@ joblib>=1.3.0
 # Visualization & Reporting
 matplotlib>=3.8.0
 seaborn>=0.13.0
+
+# Interactive Dashboard Serving
+flask>=3.0.0

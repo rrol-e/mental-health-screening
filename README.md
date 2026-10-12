@@ -78,6 +78,12 @@ Health-Project/
 
 ## 6. Quickstart
 
+### Launch the Interactive Web Dashboard
+```powershell
+.\.venv\Scripts\python.exe src/web/app.py
+```
+*Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.*
+
 ### Run Feature Comparison & Ablation
 ```powershell
 .\.venv\Scripts\python.exe src/models/compare_feature_modes.py
