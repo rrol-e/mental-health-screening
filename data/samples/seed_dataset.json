@@ -1,0 +1,114 @@
+[
+  {
+    "id": "post_001",
+    "text": "I feel so completely exhausted and empty inside. Everything I try to do always ends in failure and I am just tired of waking up every single day feeling like a burden to everyone around me. Nobody understands how alone I feel.",
+    "community": "r/depression_support",
+    "risk_label": 1,
+    "risk_category": "at_risk"
+  },
+  {
+    "id": "post_002",
+    "text": "Just finished painting my living room! It took three coats of blue-grey paint and an entire Saturday, but the natural lighting makes the space feel so much warmer. Next weekend I'm planning to work on the bookshelf.",
+    "community": "r/CasualConversation",
+    "risk_label": 0,
+    "risk_category": "stable"
+  },
+  {
+    "id": "post_003",
+    "text": "I can't sleep at all again tonight. The insomnia is unbearable and my chest hurts from constant panic. I keep thinking that nothing will ever get better and I have no one left to talk to. I just want the pain to stop.",
+    "community": "r/anxiety_help",
+    "risk_label": 1,
+    "risk_category": "at_risk"
+  },
+  {
+    "id": "post_004",
+    "text": "Does anyone have recommendations for beginner sourdough starters? I bought bread flour and whole wheat yesterday. Wondering if I should keep it in the pantry or if room temperature on the counter is better.",
+    "community": "r/Breadit",
+    "risk_label": 0,
+    "risk_category": "stable"
+  },
+  {
+    "id": "post_005",
+    "text": "I hate myself so much. Every time I think I made progress, I ruin it. I am completely broken and hopeless. There is no point in trying anymore because I fail at every single thing.",
+    "community": "r/mentalhealth",
+    "risk_label": 1,
+    "risk_category": "at_risk"
+  },
+  {
+    "id": "post_006",
+    "text": "Our team won our local recreational soccer tournament today! We played three back-to-back matches in the heat. Great teamwork from everyone, and we celebrated with pizza afterwards.",
+    "community": "r/sports",
+    "risk_label": 0,
+    "risk_category": "stable"
+  },
+  {
+    "id": "post_007",
+    "text": "I feel so disconnected and numb. Sitting in my room for hours unable to eat or get out of bed. Nobody notices when I disappear anyway, and I honestly don't blame them.",
+    "community": "r/depression_support",
+    "risk_label": 1,
+    "risk_category": "at_risk"
+  },
+  {
+    "id": "post_008",
+    "text": "What are your favorite podcast episodes on astronomy? I've been listening to episodes about the James Webb Space Telescope's latest deep field observations while commuting to work.",
+    "community": "r/podcasts",
+    "risk_label": 0,
+    "risk_category": "stable"
+  },
+  {
+    "id": "post_009",
+    "text": "The overwhelming dread in the morning is suffocating. I wake up crying before my alarm even goes off. I am completely overwhelmed and feel like I'm drowning with zero way out.",
+    "community": "r/anxiety_help",
+    "risk_label": 1,
+    "risk_category": "at_risk"
+  },
+  {
+    "id": "post_010",
+    "text": "Visited the botanical garden with my family this afternoon. The Japanese maple trees were changing colors and the weather was crisp and pleasant. Highly recommend if you are visiting the city.",
+    "community": "r/gardening",
+    "risk_label": 0,
+    "risk_category": "stable"
+  },
+  {
+    "id": "post_011",
+    "text": "It feels like my mind is constantly screaming. The guilt won't leave me alone, constantly reminding me that I am worthless and let down every person I cared about. I don't know how much longer I can carry this.",
+    "community": "r/mentalhealth",
+    "risk_label": 1,
+    "risk_category": "at_risk"
+  },
+  {
+    "id": "post_012",
+    "text": "Sharing my desk setup for working from home. Switched to a standing desk and an ergonomic chair last month, which made a huge difference for lower back posture. Any monitor arm suggestions?",
+    "community": "r/Workspaces",
+    "risk_label": 0,
+    "risk_category": "stable"
+  },
+  {
+    "id": "post_013",
+    "text": "I feel completely trapped. Nothing brings me joy, I haven't left my bed in four days, and I have no energy left. I feel like an absolute ghost watching life happen without me.",
+    "community": "r/depression_support",
+    "risk_label": 1,
+    "risk_category": "at_risk"
+  },
+  {
+    "id": "post_014",
+    "text": "My local library is hosting a book club on sci-fi classics starting next Tuesday. We are starting with Dune and then moving on to Foundation. Looking forward to discussing world-building with other readers.",
+    "community": "r/books",
+    "risk_label": 0,
+    "risk_category": "stable"
+  },
+  {
+    "id": "post_015",
+    "text": "I'm terrified that this darkness is permanent. Every single year feels heavier, and I constantly wonder why I was even born if existence is just endless agony and loneliness.",
+    "community": "r/mentalhealth",
+    "risk_label": 1,
+    "risk_category": "at_risk"
+  },
+  {
+    "id": "post_016",
+    "text": "Adopted a rescue cat from the animal shelter yesterday! He was shy for the first couple of hours, but now he is purring and sleeping right next to my laptop while I read.",
+    "community": "r/aww",
+    "risk_label": 0,
+    "risk_category": "stable"
+  }
+]

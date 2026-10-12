@@ -1,0 +1,22 @@
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Python byte code & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Hugging Face and temporary caches
+.cache/
+hf_cache/
+
+# OS metadata
+.DS_Store
+Thumbs.db
